@@ -4,29 +4,52 @@
 
 int criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo){
 
-    pp->topo = -1;
-    pp->tmax = tamanhoVetor;
-    pp->tinfo = tamanhoInfo;
-    pp->dados = void* malloc (tamanhoVetor * sizeof(tamanhoInfo));
+    pp = (pPilha*) malloc (tamanhoVetor * sizeof(pPilha));
+    printf ("OK entrou\n");
+    (**pp).topo = -1;
+    printf ("OK topo %d\n", (**pp).topo);
+    (**pp).tmax = tamanhoVetor;
+    printf ("OK tamvet %d\n", (**pp).tmax);
+    (**pp).tinfo = tamanhoInfo;
+    printf ("OK taminfo %d\n", (**pp).tinfo);
+    (**pp).dados = (void*) malloc (sizeof(tamanhoInfo));
+    printf ("OK dados\n");
     
     return 0;
 }
 
-int destroipilha(ppPilha pp);
+int destroipilha(ppPilha pp) {
+    
+    free(pp);
+
+    return 0;
+
+}
 
 int empilha(pPilha p, void *elemento) {
     
+    printf ("entrou empilha\n");
     p->topo++;
-    p->dados [p->topo] = *elemento;
+    printf ("OK topo++ %d\n", p->topo);
+    p->dados [p->topo] = elemento;
 
 }
 
 int desempilha( pPilha p, void *elemento) {
 
-    void* aux = p->dados [p->topo];
     p->topo--;
 
-    return aux;
+    return 0;
 }
 
-int reiniciapilha(pPilha p);
+int reiniciapilha(pPilha p) {
+
+}
+
+int *topo(pPilha p) {
+    
+    int aux;
+
+    aux = (p->dados [p->topo - 1]);
+    return aux;
+}
