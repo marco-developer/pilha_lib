@@ -2,7 +2,7 @@
 #include "stdlib.h"
 #include "pilha_privado.h"
 
-int criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo){
+void criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo){
 
     pp = (pPilha*) malloc (tamanhoVetor * sizeof(pPilha));
     printf ("OK entrou\n");
@@ -15,7 +15,7 @@ int criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo){
     (**pp).dados = (void*) malloc (sizeof(tamanhoInfo));
     printf ("OK dados\n");
     
-    return 0;
+    // return 0;
 }
 
 int destroipilha(ppPilha pp) {
@@ -28,6 +28,7 @@ int destroipilha(ppPilha pp) {
 
 int empilha(pPilha p, void *elemento) {
     
+    p = (pPilha) malloc (sizeof(pPilha));
     printf ("entrou empilha\n");
     p->topo++;
     printf ("OK topo++ %d\n", p->topo);
@@ -35,21 +36,39 @@ int empilha(pPilha p, void *elemento) {
 
 }
 
-int desempilha( pPilha p, void *elemento) {
+void desempilha( pPilha p) {
 
+    if ( Vazia (&p) == 1 )
+
+		printf( "\nPILHA VAZIA!\n" );
+
+	else 
+    
     p->topo--;
 
-    return 0;
+    // return 0;
 }
 
 int reiniciapilha(pPilha p) {
 
 }
 
-int *topo(pPilha p) {
+void* topo(pPilha p) {
     
-    int aux;
+    void *aux;
 
-    aux = (p->dados [p->topo - 1]);
+    aux = (p->dados [p->topo]);
     return aux;
+}
+
+int Vazia(pPilha p){
+
+   if( p->topo == -1 )
+
+      return 1;   // true
+
+   else
+
+      return 0;   // false
+
 }

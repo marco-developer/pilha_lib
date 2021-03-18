@@ -14,6 +14,6 @@ aplicacao:	aplicacao.c aplicacao.o pilha.o
 #	$(CC) $(CFLAGS) ajuste.c pilha.o -o ajuste
 
 clean:	
-	rm -f aplicacao  *.o core a.out *.*~ Makefile~
+	rm -f aplicacao  *.o core a.out 
 
 all:	aplicacao
