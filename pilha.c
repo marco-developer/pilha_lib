@@ -26,25 +26,28 @@ int destroipilha(ppPilha pp) {
 
 }
 
-int empilha(pPilha p, void *elemento) {
+void empilha(pPilha p, void *elemento) {
     
     p = (pPilha) malloc (sizeof(pPilha));
     printf ("entrou empilha\n");
+    printf ("Valor topo: %d\n", p->topo);
     p->topo++;
-    printf ("OK topo++ %d\n", p->topo);
+    printf ("Valor topo: %d\n", p->topo);
     p->dados [p->topo] = elemento;
-
+    printf ("Elemento inserido ", p->dados [p->topo]);
 }
 
-void desempilha( pPilha p) {
-
-    if ( Vazia (&p) == 1 )
+void desempilha(pPilha p) {
+        
+	printf( "\nEntrou desempilha!\n" );
+    printf ("Valor topo: %d\n", p->topo);
+    if ( p->topo == -1 )
 
 		printf( "\nPILHA VAZIA!\n" );
 
-	else 
-    
-    p->topo--;
+	//else 
+
+    //p->topo--;
 
     // return 0;
 }
@@ -53,12 +56,13 @@ int reiniciapilha(pPilha p) {
 
 }
 
-void* topo(pPilha p) {
-    
-    void *aux;
+void topo(pPilha p) {
 
-    aux = (p->dados [p->topo]);
-    return aux;
+    printf( "\nEntrou topo!\n" );
+    pPilha aux;
+    printf ("Valor topo: %d\n", p->topo);
+    aux->dados = (p->dados [p->topo]);
+    printf( "\nValor de aux: %d\n", aux);
 }
 
 int Vazia(pPilha p){

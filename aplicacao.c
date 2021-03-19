@@ -17,7 +17,6 @@ int main(int argc, char *argv[]) {
      arg = (int*) malloc(sizeof(int)*(argc-1));
      printf ("Preparando para criar pilha...\n");
      criapilha(&P, argc-1, sizeof(int));
-     printf ("chegou até aqui\n");
 
     // if (!ret) {
     //     printf ("ERRO cria pilha!\n");
@@ -26,28 +25,24 @@ int main(int argc, char *argv[]) {
 
     for (int i=0; i<argc-1; i++) {
         arg[i] = atoi(argv[i+1]);
-        ret = empilha(P, &arg[i]);
+        empilha(P, &arg[i]);
         printf ("(%d)\n", arg[i]);
     }
     printf ("\n");
 
     for (int i=0; i<argc-1; i++) {
         
-        topo(P);
-        if (!ret)
-            printf ("ERRO topo ...\n");
-        else
-            printf ("OK topo %d\n", valor);
+        topo(&P);
+        // if (!ret)
+        //     printf ("ERRO topo ...\n");
+        // else
+        //     printf ("OK topo %d\n", valor);
 
-	    desempilha(P);
+	    desempilha(&P);
         if (!ret)
             printf ("ERRO desempilha ...\n");
         else
             printf ("OK desempilha %d\n, valor");
-
-		
-
-
 
     }
 }
