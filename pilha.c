@@ -21,7 +21,7 @@ void freeStack(pilha *P) {
 
 void push(pilha *s, void *src) {
   // Calcula a posição
-  if(s->length==s->capacity)
+  if(cheia(s)==1)
     printf("Impossivel inserir mais elementos, pilha cheia!!\n");
   else {
     int pos = s->length * s->size;
@@ -34,7 +34,7 @@ void push(pilha *s, void *src) {
 
 void pop(pilha *s, void *dst) {
   
-  if(s->length==0)
+  if(vazia(s)==1)
     printf("Não há mais elementos para remover!\n");
   else {
     // Diminui o contador...
@@ -49,8 +49,10 @@ void pop(pilha *s, void *dst) {
 
 int cheia(pilha *s) {
   if(s->length==s->capacity) return 1;
+  else return 0;
 }
 
 int vazia(pilha *s) {
   if(s->length==0) return 1;
+  else return 0;
 }
