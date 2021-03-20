@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
         printf ("Pilha criada.\n");
 
         printf ("Iniciando empilhamento...\n\n");
-        for(int i=0;i<=nroElementos;i++){
+        for(int i=0;i<(nroElementos+2);i++){
             printf ("Digite o valor a inserir: \n");
             scanf ("%d", &insere);
             push(P, &insere);

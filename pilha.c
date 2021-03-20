@@ -3,8 +3,6 @@
 #include <string.h> 
 #include "pilha_privado.h"
 
-// pra criar, você teria que fazer duas alocações
-
 pilha *createStack(int capacity, int size) {
   printf ("Alocando pilha...\n");
   pilha *res = malloc(sizeof(pilha));
@@ -21,8 +19,6 @@ void freeStack(pilha *P) {
   free(P);
 }
 
-// pra adicionar um item, precisa copiar a memória...
-
 void push(pilha *s, void *src) {
   // Calcula a posição
   if(s->length==s->capacity)
@@ -36,18 +32,25 @@ void push(pilha *s, void *src) {
   }
 }
 
-// pra pegar um objeto...
-
 void pop(pilha *s, void *dst) {
   
-  if(s->length>0){
-    //Diminui o contador já...
+  if(s->length==0)
+    printf("Não há mais elementos para remover!\n");
+  else {
+    // Diminui o contador...
     s->length--;
     // Calcula...
     int pos = s->length * s->size;
     // Copia...
     memcpy(dst, s->data + pos, s->size);
   }
-  else
-  printf("Não há mais elementos para remover!\n");
+  
+}
+
+int cheia(pilha *s) {
+  if(s->length==s->capacity) return 1;
+}
+
+int vazia(pilha *s) {
+  if(s->length==0) return 1;
 }

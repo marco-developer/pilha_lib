@@ -7,5 +7,5 @@ typedef struct stack {
   void *data; // Ponteiro pra memória
 } pilha;
 
-// int Cheia(pPilha p);
-// int Vazia(pPilha p);
+int cheia(pilha *p);
+int vazia(pilha *p);
