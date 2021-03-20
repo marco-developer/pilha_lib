@@ -26,14 +26,14 @@ int main(int argc, char *argv[]) {
         printf ("Pilha criada.\n");
 
         printf ("Iniciando empilhamento...\n\n");
-        for(int i=0;i<nroElementos;i++){
+        for(int i=0;i<=nroElementos;i++){
             printf ("Digite o valor a inserir: \n");
             scanf ("%d", &insere);
             push(P, &insere);
         }
 
         printf ("Iniciando desempilhamento...\n\n");
-        for(int i=0;i<nroElementos;i++){    
+        for(int i=0;i<=nroElementos;i++){    
             pop(P, &remove);
             printf ("Item removido: %d\n", remove);
         }

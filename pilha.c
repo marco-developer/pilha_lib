@@ -25,20 +25,29 @@ void freeStack(pilha *P) {
 
 void push(pilha *s, void *src) {
   // Calcula a posição
-  int pos = s->length * s->size;
-  // Copia a memória...
-  memcpy(s->data + pos, src, s->size);
-  // Aumenta o tamanho...
-  s->length++;
+  if(s->length==s->capacity)
+    printf("Impossivel inserir mais elementos, pilha cheia!!\n");
+  else {
+    int pos = s->length * s->size;
+    // Copia a memória...
+    memcpy(s->data + pos, src, s->size);
+    // Aumenta o tamanho...
+    s->length++;
+  }
 }
 
 // pra pegar um objeto...
 
 void pop(pilha *s, void *dst) {
-  // Diminui o contador já...
-  s->length--;
-  // Calcula...
-  int pos = s->length * s->size;
-  // Copia...
-  memcpy(dst, s->data + pos, s->size);
+  
+  if(s->length>0){
+    //Diminui o contador já...
+    s->length--;
+    // Calcula...
+    int pos = s->length * s->size;
+    // Copia...
+    memcpy(dst, s->data + pos, s->size);
+  }
+  else
+  printf("Não há mais elementos para remover!\n");
 }
