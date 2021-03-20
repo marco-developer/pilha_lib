@@ -1,10 +1,6 @@
-typedef struct PE *pPilha, **ppPilha;
+typedef struct stack pilha;
 
-void criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo);
-int destroipilha(ppPilha pp);
-
-void empilha(pPilha p, void *elemento);
-void desempilha(pPilha p);
-
-int reiniciapilha(pPilha p);
-void topo(pPilha p);
+pilha *createStack(int capacity, int size);
+// void freeStack(pilha P);
+void push(pilha *s, void *src);
+void pop(pilha *s, void *dst);

@@ -1,13 +1,11 @@
 #include "pilha_publico.h"
 
-struct PE
-{
-    int topo;
-    int tmax;
-    int tinfo;
-    void **dados;
+typedef struct stack {
+  int capacity; // Quantidade de itens disponível
+  int size; // Tamanho de cada item
+  int length; // Quantidade de itens usados
+  char *data; // Ponteiro pra memória
+} pilha;
 
-};
-
-int Cheia(pPilha p);
-int Vazia(pPilha p);
+// int Cheia(pPilha p);
+// int Vazia(pPilha p);

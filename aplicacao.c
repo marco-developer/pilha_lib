@@ -4,45 +4,40 @@
 
 int main(int argc, char *argv[]) {
     
-    pPilha P;
-    int ret=0;
-    int valor=0;
+    pilha *P;
     int *arg;
+    int tamdado;
+    void *removido;
+    int nroElementos;
+    void *insere;
 
-    if (argc <1) {
-        printf ("ERRO: ./aplicacao <inteiro> <inteiro> ... \n");
-        return 1;
+    printf ("Informe o tamanho do dado: \n");
+    scanf ("%i", &tamdado);
+
+    printf ("Informe o numero de elementos: \n");
+    scanf ("%i", &nroElementos);
+    
+
+    printf ("Preparando para criar pilha...\n");
+    P = createStack(nroElementos, sizeof(tamdado));
+    printf ("Pilha criada.\n");
+
+
+    printf ("Iniciando empilhamento...\n\n");
+    for(int i=0;i<nroElementos;i++){
+        printf ("Digite o valor a inserir: \n");
+        scanf ("%d", &insere);
+        push(P, &insere);
     }
 
-     arg = (int*) malloc(sizeof(int)*(argc-1));
-     printf ("Preparando para criar pilha...\n");
-     criapilha(&P, argc-1, sizeof(int));
+    printf ("Iniciando desempilhamento...\n\n");
 
-    // if (!ret) {
-    //     printf ("ERRO cria pilha!\n");
-    //     return 1;
-    // }
-
-    for (int i=0; i<argc-1; i++) {
-        arg[i] = atoi(argv[i+1]);
-        empilha(P, &arg[i]);
-        printf ("(%d)\n", arg[i]);
+    for(int i=0;i<nroElementos;i++){    
+        pop(P, &removido);
+        printf ("Item removido: %d\n", removido);
     }
-    printf ("\n");
 
-    for (int i=0; i<argc-1; i++) {
-        
-        topo(&P);
-        // if (!ret)
-        //     printf ("ERRO topo ...\n");
-        // else
-        //     printf ("OK topo %d\n", valor);
+     // freeStack(P);
 
-	    desempilha(&P);
-        if (!ret)
-            printf ("ERRO desempilha ...\n");
-        else
-            printf ("OK desempilha %d\n, valor");
 
-    }
 }

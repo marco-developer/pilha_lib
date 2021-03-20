@@ -1,78 +1,43 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include <string.h> 
 #include "pilha_privado.h"
 
-void criapilha(ppPilha pp, int tamanhoVetor, int tamanhoInfo){
+// pra criar, você teria que fazer duas alocações
 
-    pp = (pPilha*) malloc (tamanhoVetor * sizeof(pPilha));
-    printf ("OK entrou\n");
-    (**pp).topo = -1;
-    printf ("OK topo %d\n", (**pp).topo);
-    (**pp).tmax = tamanhoVetor;
-    printf ("OK tamvet %d\n", (**pp).tmax);
-    (**pp).tinfo = tamanhoInfo;
-    printf ("OK taminfo %d\n", (**pp).tinfo);
-    (**pp).dados = (void*) malloc (sizeof(tamanhoInfo));
-    printf ("OK dados\n");
-    
-    // return 0;
+pilha *createStack(int capacity, int size) {
+  printf ("Alocando pilha...\n");
+  pilha *res = malloc(sizeof(pilha));
+  res->capacity = capacity;
+  res->size = size;
+  res->length = 0;
+  printf ("Alocando dados\n");
+  res->data = malloc(capacity * size);
+  return res;
 }
 
-int destroipilha(ppPilha pp) {
-    
-    free(pp);
+// void freeStack(pilha P) {
+//   free(&P);
+// }
 
-    return 0;
+// pra adicionar um item, precisa copiar a memória...
 
+void push(pilha *s, void *src) {
+  // Calcula a posição
+  int pos = s->length * s->size;
+  // Copia a memória...
+  memcpy(s->data + pos, src, s->size);
+  // Aumenta o tamanho...
+  s->length++;
 }
 
-void empilha(pPilha p, void *elemento) {
-    
-    p = (pPilha) malloc (sizeof(pPilha));
-    printf ("entrou empilha\n");
-    printf ("Valor topo: %d\n", p->topo);
-    p->topo++;
-    printf ("Valor topo: %d\n", p->topo);
-    p->dados [p->topo] = elemento;
-    printf ("Elemento inserido ", p->dados [p->topo]);
-}
+// pra pegar um objeto...
 
-void desempilha(pPilha p) {
-        
-	printf( "\nEntrou desempilha!\n" );
-    printf ("Valor topo: %d\n", p->topo);
-    if ( p->topo == -1 )
-
-		printf( "\nPILHA VAZIA!\n" );
-
-	//else 
-
-    //p->topo--;
-
-    // return 0;
-}
-
-int reiniciapilha(pPilha p) {
-
-}
-
-void topo(pPilha p) {
-
-    printf( "\nEntrou topo!\n" );
-    pPilha aux;
-    printf ("Valor topo: %d\n", p->topo);
-    aux->dados = (p->dados [p->topo]);
-    printf( "\nValor de aux: %d\n", aux);
-}
-
-int Vazia(pPilha p){
-
-   if( p->topo == -1 )
-
-      return 1;   // true
-
-   else
-
-      return 0;   // false
-
+void pop(pilha *s, void *dst) {
+  // Diminui o contador já...
+  s->length--;
+  // Calcula...
+  int pos = s->length * s->size;
+  // Copia...
+  memcpy(dst, s->data + pos, s->size);
 }
