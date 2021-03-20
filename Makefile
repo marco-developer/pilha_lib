@@ -1,6 +1,6 @@
 SHELL=/bin/sh
 CC=gcc
-CFLAGS=-O3
+CFLAGS=-O3 -g
 
 default:	aplicacao
 
