@@ -16,9 +16,10 @@ pilha *createStack(int capacity, int size) {
   return res;
 }
 
-// void freeStack(pilha P) {
-//   free(&P);
-// }
+void freeStack(pilha *P) {
+  free(P->data);
+  free(P);
+}
 
 // pra adicionar um item, precisa copiar a memória...
 

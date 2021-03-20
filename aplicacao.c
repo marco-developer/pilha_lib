@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     // printf ("Pilha criada.\n");
     // printf ("Iniciando empilhamento...\n\n");
 
-    printf ("Escolha o tipo de dado: (1)-int, (2)-float \n");
+    printf ("Escolha o tipo de dado: \n(1)-int\n(2)-char\n(3)-string \n");
     scanf ("%d", &menu);
     
     switch (menu) {
@@ -50,38 +50,47 @@ int main(int argc, char *argv[]) {
         
         case 2:
         printf ("Preparando para criar pilha...\n");
-        P = createStack(nroElementos, sizeof(float));
+        P = createStack(nroElementos, sizeof(char));
         printf ("Pilha criada.\n");
 
         printf ("Iniciando empilhamento...\n\n");
         for(int i=0;i<nroElementos;i++){
             printf ("Digite o valor a inserir: \n");
-            scanf ("%f", &insere);
+            scanf (" %c", &insere);
             push(P, &insere);
         }
         
         printf ("Iniciando desempilhamento...\n\n");
         for(int i=0;i<nroElementos;i++){    
             pop(P, &remove);
-            printf ("Item removido: %f\n", remove);
+            printf ("Item removido: %c\n", remove);
+        }
+        break;
+
+        case 3:
+        printf ("Preparando para criar pilha...\n");
+        int tamstring;
+        printf ("Tamanho da string: \n");
+        scanf ("%d", &tamstring);
+        P = createStack(nroElementos, sizeof(tamstring));
+        printf ("Pilha criada.\n");
+
+        printf ("Iniciando empilhamento...\n\n");
+        for(int i=0;i<nroElementos;i++){
+            printf ("Digite o valor a inserir: \n");
+            scanf ("%s", &insere);
+            push(P, &insere);
+        }
+        
+        printf ("Iniciando desempilhamento...\n\n");
+        for(int i=0;i<nroElementos;i++){    
+            pop(P, &remove);
+            printf ("Item removido: %s\n", remove);
         }
         break;
     }
 
-    // for(int i=0;i<nroElementos;i++){
-    //     printf ("Digite o valor a inserir: \n");
-    //     scanf ("%d", &insere);
-    //     push(P, &insere);
-    // }
-
-    // printf ("Iniciando desempilhamento...\n\n");
-
-    // for(int i=0;i<nroElementos;i++){    
-    //     pop(P, &removido);
-    //     printf ("Item removido: %d\n", removido);
-    // }
-
-     // freeStack(P);
+     freeStack(P);
 
 
 }
