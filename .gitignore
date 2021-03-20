@@ -1,4 +1,5 @@
 *.map
 *.o
 *.bin
+*.out
 aplicacao
