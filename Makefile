@@ -2,18 +2,15 @@ SHELL=/bin/sh
 CC=gcc
 CFLAGS=-O3 -g
 
-default:	aplicacao
+default:	novoapp
 
 pilha.o:	pilha.c pilha_publico.h pilha_privado.h
 	$(CC) $(CFLAGS) -c pilha.c -o pilha.o
 
-aplicacao:	aplicacao.c aplicacao.o pilha.o
-	$(CC) $(CFLAGS) aplicacao.c pilha.o -o aplicacao
-
-#ajuste:	ajuste.c ajuste.h pilha.o
-#	$(CC) $(CFLAGS) ajuste.c pilha.o -o ajuste
+novoapp:	novoapp.c novoapp.o pilha.o
+	$(CC) $(CFLAGS) novoapp.c pilha.o -o novoapp
 
 clean:	
-	rm -f aplicacao  *.o core a.out 
+	rm -f novoapp  *.o core a.out 
 
-all:	aplicacao
+all:	novoapp
